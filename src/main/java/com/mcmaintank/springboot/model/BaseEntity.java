@@ -8,8 +8,17 @@ import lombok.Data;
  */
 
 @Data
-public class BaseEntity {
+public abstract class BaseEntity {
 
-    private 
+    private Integer pageSize;
+
+    private Integer pageNum;
+
+    private Integer total;
+
+    private String sort;
+
+    private String orderBy;
+
 
 }
