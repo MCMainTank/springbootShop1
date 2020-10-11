@@ -10,5 +10,8 @@ public interface ProductService {
 
     public void deleteProduct(Long id);
 
-    public Product createProduct(Long id);
+    public Product createProduct(Product product);
+
+
+
 }

@@ -5,4 +5,6 @@ package com.mcmaintank.springboot.mapper;
  * @create 2020/10/7
  */
 public interface UserMapper {
+
+
 }
