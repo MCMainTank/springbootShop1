@@ -14,8 +14,8 @@ public class ProductController {
 
     ProductService productService;
 
-    @RequestMapping("store");
-    @ResponseBody;
-    public
+//    @RequestMapping("store");
+//    @ResponseBody;
+//    public
 
 }

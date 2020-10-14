@@ -30,4 +30,7 @@ public interface UserMapper {
     @Select("select user_password from user where user_loginname = #{userLoginname}")
     void getPassword(String userLoginname);
 
+    @Select("select * from user where user_name = #{userName}")
+    void selectUserByName(@Param("userName")String userName);
+
 }
