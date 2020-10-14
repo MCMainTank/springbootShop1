@@ -3,6 +3,8 @@ package com.mcmaintank.springboot.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
  * @author MCMainTank
  * @create 2020/10/7
@@ -22,6 +24,8 @@ public class Product extends BaseEntity{
     private Float productPrice;
 
     private String productImgpath;
+
+    private Date createDate;
 
 
 

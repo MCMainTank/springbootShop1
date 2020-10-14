@@ -5,4 +5,7 @@ package com.mcmaintank.springboot.model;
  * @create 2020/10/7
  */
 public class Category {
+
+
+
 }

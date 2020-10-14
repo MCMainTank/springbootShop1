@@ -16,6 +16,7 @@ import java.util.Map;
  * @create 2020/10/7
  */
 @Controller
+@RequestMapping(path = "/user")
 public class UserController {
 
     @Autowired
@@ -25,24 +26,33 @@ public class UserController {
     User user;
 
 
-    @PostMapping(value = "/user/login")
+    @PostMapping(path = "/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         Map<String,Object> map){
-        if(!StringUtils.isEmpty(username)&&.equals(password)){
+
+//        if(!StringUtils.isEmpty(username)&&userServiceImpl.getPassword().equals(ShiroUtil.encrypt(password))){
+//            //成功
+//            return "loggedin";
+//        }else{
+//            map.put("msg","Wrong username or password!");
+//            return "failed";
+//        }
+
+        if(!StringUtils.isEmpty(username)&&"123456".equals(password)){
             //成功
             return "loggedin";
         }else{
             map.put("msg","Wrong username or password!");
-            return "login";
+            return "failed";
         }
 
     }
 
-    @RequestMapping(value = "/loggedin")
-    public String checkuserinfo(){
-
-        return "userinfo";
+    @RequestMapping(value = "getUser")
+    public User checkUserInfo(){
+        User user = userServiceImpl.getUser();
+        return user;
     }
 
 
