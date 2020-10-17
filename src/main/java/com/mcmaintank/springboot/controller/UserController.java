@@ -1,14 +1,14 @@
 package com.mcmaintank.springboot.controller;
 
 import com.mcmaintank.springboot.model.User;
+import com.mcmaintank.springboot.service.UserService;
 import com.mcmaintank.springboot.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +20,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserServiceImpl userServiceImpl;
+    UserService userService;
 
     @Autowired
     User user;
@@ -51,8 +51,15 @@ public class UserController {
 
     @RequestMapping(value = "getUser")
     public User checkUserInfo(){
-        User user = userServiceImpl.getUser();
+        User user = userService.getUser(100001L);
         return user;
+    }
+
+    @RequestMapping("getAllUser")
+    @ResponseBody
+    public List <User> getAllUser(){
+        List<User> userList = userService.getAllUser();
+        return userList;
     }
 
 

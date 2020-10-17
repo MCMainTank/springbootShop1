@@ -2,16 +2,20 @@ package com.mcmaintank.springboot.mapper;
 
 import com.mcmaintank.springboot.model.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author MCMainTank
  * @create 2020/10/7
  */
-@Mapper
+@Repository
+//@Mapper
 public interface UserMapper {
 
     @Select("select * from user where user_id = #{userId}")
-    void selectUserById(@Param("userId")Long userId);
+    User selectUserById(@Param("userId")Long userId);
 
     @Update("update user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
             "user_cellphone=#{userCellphone},user_autograph=#{userAutograph},user_balance=#{userBalance}")
@@ -25,12 +29,12 @@ public interface UserMapper {
     int insertUser(User user);
 
     @Select("select * from user ")
-    void selectAllUser();
+    List <User> selectAllUser();
 
     @Select("select user_password from user where user_loginname = #{userLoginname}")
-    void getPassword(String userLoginname);
+    String getPassword(String userLoginname);
 
     @Select("select * from user where user_name = #{userName}")
-    void selectUserByName(@Param("userName")String userName);
+    User selectUserByName(@Param("userName")String userName);
 
 }

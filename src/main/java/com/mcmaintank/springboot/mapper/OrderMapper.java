@@ -2,12 +2,14 @@ package com.mcmaintank.springboot.mapper;
 
 import com.mcmaintank.springboot.model.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author MCMainTank
  * @create 2020/10/7
  */
-@Mapper
+@Repository
+//@Mapper
 public interface OrderMapper {
 
     @Select("select * from user where user_id = #{userId}")
