@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author MCMainTank
  * @create 2020/10/7
  */
+//Admin functions
 @Controller
 public class ProductController {
 

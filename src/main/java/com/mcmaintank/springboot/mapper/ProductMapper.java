@@ -5,6 +5,8 @@ import com.mcmaintank.springboot.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author MCMainTank
  * @create 2020/10/7
@@ -13,22 +15,24 @@ import org.springframework.stereotype.Repository;
 //@Mapper
 public interface ProductMapper {
 
-    @Select("select * from product where product_id = #{productId}")
+    @Select("select * from eshop_product where product_id = #{productId}")
     void selectProductById(@Param("productId")Long productId);
 
-    @Update("update product set product_id=#{productId},product_name=#{productName},category_id=#{categoryId}," +
+    @Update("update eshop_product set product_id=#{productId},product_name=#{productName},category_id=#{categoryId}," +
             "product_price=#{productPrice},product_description=#{productDescription},product_imgpath=#{productImgpath}")
     int updateUserById(User user);
 
-    @Delete("delete from product where product_id = #{productId}")
+    @Delete("delete from eshop_product where product_id = #{productId}")
     int deleteProductById(Long id);
 
-    @Insert("insert into product(product_id,product_name,category_id,product_price,product_description,product_imgpath) " +
+    @Insert("insert into eshop_product(product_id,product_name,category_id,product_price,product_description,product_imgpath) " +
             "values(#{productId},#{productName},#{categoryId},#{productPrice},#{productDescription},#{productImgpath})")
     int insertProduct(Product product);
 
-    @Select("select * from product")
-    void selectAllProduct();
+    @Select("select * from eshop_product")
+    List<Product> selectAllProduct();
 
+    @Select("select * from eshop_product where product_name like #{productName}")
+    List<Product> searchByName(@Param("productName")String productName);
 
 }

@@ -7,6 +7,7 @@ import com.mcmaintank.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -19,8 +20,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserMapper userMapper;
 
-    @Autowired
-    User user;
 
     @Override
     public void deleteUser(Long id) {
@@ -41,18 +40,30 @@ public class UserServiceImpl implements UserService{
     public User getUser(Long userId) {
         User user = userMapper.selectUserById(userId);
         return user;
+//        return null;
     }
 
     @Override
-    public User getUserByName(String name){
-        User user = userMapper.selectUserByName(name);
+    public User getUserByName(String username){
+        User user = userMapper.selectUserByName(username);
         return user;
+//        return null;
+    }
+
+
+//    This is a function available for debugging phase.
+    @Override
+    public int topUpUserFund(String name, BigDecimal fund) {
+        User user= userMapper.selectUserByName(name);
+        user.setUserBalance(user.getUserBalance().add(fund));
+        return 0;
     }
 
     @Override
     public List<User> getAllUser() {
         List <User> userList = userMapper.selectAllUser();
         return userList;
+//        return null;
     }
 
 

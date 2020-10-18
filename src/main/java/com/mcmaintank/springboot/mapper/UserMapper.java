@@ -14,27 +14,27 @@ import java.util.List;
 //@Mapper
 public interface UserMapper {
 
-    @Select("select * from user where user_id = #{userId}")
+    @Select("select * from eshop_user where user_id = #{userId}")
     User selectUserById(@Param("userId")Long userId);
 
-    @Update("update user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
+    @Update("update eshop_user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
             "user_cellphone=#{userCellphone},user_autograph=#{userAutograph},user_balance=#{userBalance}")
     int updateUserById(User user);
 
-    @Delete("delete from user where user_id = #{userId}")
+    @Delete("delete from eshop_user where user_id = #{userId}")
     int deleteUserById(Long id);
 
-    @Insert("insert into user(user_loginname,user_password,user_email,user_cellphone,user_autograph,user_balance) " +
+    @Insert("insert into eshop_user(user_loginname,user_password,user_email,user_cellphone,user_autograph,user_balance) " +
             "values(#{userLoginname},#{userPassword},#{userEmail},#{userCellphone},#{userAutograph},#{userBalance})")
     int insertUser(User user);
 
-    @Select("select * from user ")
+    @Select("select * from eshop_user ")
     List <User> selectAllUser();
 
-    @Select("select user_password from user where user_loginname = #{userLoginname}")
+    @Select("select user_password from eshop_user where user_loginname = #{userLoginname}")
     String getPassword(String userLoginname);
 
-    @Select("select * from user where user_name = #{userName}")
+    @Select("select * from eshop_user where user_name = #{userName}")
     User selectUserByName(@Param("userName")String userName);
 
 }

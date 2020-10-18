@@ -2,6 +2,7 @@ package com.mcmaintank.springboot.service;
 
 import com.mcmaintank.springboot.model.User;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,6 +21,8 @@ public interface UserService {
 
     public List<User> getAllUser();
 
-    public User getUserByName(String name);
+    public User getUserByName(String username);
+
+    public int topUpUserFund(String name, BigDecimal fund);
 
 }

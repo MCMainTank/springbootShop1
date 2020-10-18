@@ -1,8 +1,11 @@
 package com.mcmaintank.springboot.mapper;
 
+import com.mcmaintank.springboot.model.Order;
 import com.mcmaintank.springboot.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author MCMainTank
@@ -12,22 +15,25 @@ import org.springframework.stereotype.Repository;
 //@Mapper
 public interface OrderMapper {
 
-    @Select("select * from user where user_id = #{userId}")
-    void selectUserById(@Param("userId")Long userId);
+    @Select("select * from eshop_order where user_id = #{userId}")
+    List<Order> selectOrderByUserId(@Param("userId")Long userId);
 
-    @Update("update user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
-            "user_cellphone=#{userCellphone},user_autograph=#{userAutograph},user_balance=#{userBalance}")
-    int updateUserById(User user);
+//    @Update("update user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
+//            "user_cellphone=#{userCellphone},user_autograph=#{userAutograph},user_balance=#{userBalance}")
+//    int updateUserById(User user);
 
-    @Delete("delete from user where user_id = #{userId}")
-    int deleteUserById(Long id);
+//    @Delete("delete from user where user_id = #{userId}")
+//    int deleteUserById(Long id);
 
-    @Insert("insert into user(user_loginname,user_password,user_email,user_cellphone,user_autograph,user_balance) " +
-            "values(#{userLoginname},#{userPassword},#{userEmail},#{userCellphone},#{userAutograph},#{userBalance})")
-    int insertUser(User user);
+    @Insert("insert into eshop_order(order_id,user_id,product_id,product_quantity,order_number,create_date,product_price ) " +
+            "values(#{orderId},#{userId},#{productId},#{productQuantity},#{orderNumber},#{createDate),#{productPrice)")
+    int insertOrder(List<Order> order);
 
-    @Select("select * from user ")
-    void selectAllUser();
+    @Select("select * from eshop_order ")
+    void selectAllOrder();
+
+    @Select("select max(order_id) from eshop_order")
+    Long selectLatestOrderId();
 
 
 }

@@ -22,11 +22,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    User user;
 
+    @RequestMapping("index")
+    @ResponseBody
+    public String index(){
+        return "Welcome! Please log in.";
+    }
 
-    @PostMapping(path = "/login")
+    @PostMapping(path = "login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         Map<String,Object> map){
@@ -50,6 +53,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "getUser")
+    @ResponseBody
     public User checkUserInfo(){
         User user = userService.getUser(100001L);
         return user;
