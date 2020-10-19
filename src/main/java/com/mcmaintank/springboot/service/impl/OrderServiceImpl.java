@@ -1,5 +1,6 @@
 package com.mcmaintank.springboot.service.impl;
 
+import com.mcmaintank.springboot.mapper.CartMapper;
 import com.mcmaintank.springboot.mapper.OrderMapper;
 import com.mcmaintank.springboot.model.Cart;
 import com.mcmaintank.springboot.model.Order;
@@ -21,6 +22,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderMapper orderMapper;
+
+    @Autowired
+    CartMapper cartMapper;
 
 
     @Override

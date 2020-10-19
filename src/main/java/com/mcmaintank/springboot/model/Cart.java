@@ -35,5 +35,5 @@ public class Cart extends BaseEntity{
 
     private Long productId;
 
-    private boolean deletedLogic;
+    private int deletedLogic;
 }

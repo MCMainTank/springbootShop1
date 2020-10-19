@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -16,6 +20,8 @@ import java.util.List;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService{
+
+    private static final String SALT = "G60produce3Kl";
 
     @Autowired
     UserMapper userMapper;
@@ -48,6 +54,18 @@ public class UserServiceImpl implements UserService{
         User user = userMapper.selectUserByName(username);
         return user;
 //        return null;
+    }
+
+    @Override
+    public String hashString(String hash) {
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        md5.update(StandardCharsets.UTF_8.encode(hash + SALT));
+        return String.format("%032x", new BigInteger(md5.digest()));
     }
 
 

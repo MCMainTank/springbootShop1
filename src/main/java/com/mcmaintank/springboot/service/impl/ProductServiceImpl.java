@@ -27,4 +27,9 @@ public class ProductServiceImpl implements ProductService{
         return null;
     }
 
+    @Override
+    public String getProductImageById(Long id) {
+        return productMapper.selectProductImageById(id);
+    }
+
 }

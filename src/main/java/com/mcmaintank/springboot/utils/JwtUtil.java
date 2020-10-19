@@ -1,4 +1,4 @@
-//package com.mcmaintank.springboot.utils;
+package com.mcmaintank.springboot.utils;//package com.mcmaintank.springboot.utils;
 //
 //import com.auth0.jwt.JWT;
 //import com.auth0.jwt.JWTVerifier;
@@ -107,3 +107,30 @@
 //        return Algorithm.HMAC256(secret + salt + "(ノ￣▽￣)ノ 皮一下" + random);
 //    }
 //}
+
+
+import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
+
+import java.util.Map;
+
+public class JwtUtil {
+    public static String encode(String key, Map<String,Object> param, String salt){
+        if(salt!=null){
+            key+=salt;
+        }
+        JwtBuilder jwtBuilder = Jwts.builder().signWith(SignatureAlgorithm.HS256,key);
+        jwtBuilder = jwtBuilder.setClaims(param); String token = jwtBuilder.compact();
+        return token;
+    }
+
+    public static Map<String,Object> decode(String token , String key, String salt){
+        Claims claims=null;
+        if (salt!=null){
+            key+=salt;
+        }try {
+            claims= Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+        } catch ( JwtException e) {
+            return null;
+        }return claims;
+    }
+}

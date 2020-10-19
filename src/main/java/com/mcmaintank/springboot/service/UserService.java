@@ -25,4 +25,6 @@ public interface UserService {
 
     public int topUpUserFund(String name, BigDecimal fund);
 
+    public String hashString(String hash);
+
 }

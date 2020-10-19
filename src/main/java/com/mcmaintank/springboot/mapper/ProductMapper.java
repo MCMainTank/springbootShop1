@@ -16,7 +16,7 @@ import java.util.List;
 public interface ProductMapper {
 
     @Select("select * from eshop_product where product_id = #{productId}")
-    void selectProductById(@Param("productId")Long productId);
+    Product selectProductById(@Param("productId")Long productId);
 
     @Update("update eshop_product set product_id=#{productId},product_name=#{productName},category_id=#{categoryId}," +
             "product_price=#{productPrice},product_description=#{productDescription},product_imgpath=#{productImgpath}")
@@ -34,5 +34,8 @@ public interface ProductMapper {
 
     @Select("select * from eshop_product where product_name like #{productName}")
     List<Product> searchByName(@Param("productName")String productName);
+
+    @Select("select product_imgpath from eshop_product where product_id = #{productId}")
+    String selectProductImageById(@Param("productId")Long productId);
 
 }

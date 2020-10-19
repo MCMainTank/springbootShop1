@@ -15,7 +15,7 @@ import java.util.List;
 //@Mapper
 public interface OrderMapper {
 
-    @Select("select * from eshop_order where user_id = #{userId}")
+    @Select("select * from eshop_order where user_id = #{userId} and deleted_logic = 0")
     List<Order> selectOrderByUserId(@Param("userId")Long userId);
 
 //    @Update("update user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +

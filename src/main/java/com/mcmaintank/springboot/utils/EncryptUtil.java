@@ -18,13 +18,15 @@ public class EncryptUtil {
     /** 字符编码 */
     private final static String CHARSET = "UTF-8";
 
+    private static String SALT = "G60produce3Kl";
+
     /**
      * 加密处理
      * @param password 密码
-     * @param salt 密码盐
+     *
      */
-    public static String encrypt(String password, String salt) {
-        return encrypt(password, salt, HASH_ALGORITHM_NAME, HASH_ITERATIONS);
+    public static String encrypt(String password) {
+        return encrypt(password, SALT, HASH_ALGORITHM_NAME, HASH_ITERATIONS);
     }
 
     /**
@@ -94,4 +96,6 @@ public class EncryptUtil {
         }
         return new String(out);
     }
+
+
 }

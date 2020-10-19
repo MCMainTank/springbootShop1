@@ -12,6 +12,8 @@ public interface ProductService {
 
     public Product createProduct(Product product);
 
+    public String getProductImageById(Long id);
+
 
 
 }
