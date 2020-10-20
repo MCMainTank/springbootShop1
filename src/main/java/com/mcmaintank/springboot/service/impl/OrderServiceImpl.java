@@ -51,4 +51,12 @@ public class OrderServiceImpl implements OrderService {
 
         return 0;
     }
+
+    @Override
+    public List<Order> checkAllOrders(Long userId) {
+        
+        return null;
+    }
+
+
 }

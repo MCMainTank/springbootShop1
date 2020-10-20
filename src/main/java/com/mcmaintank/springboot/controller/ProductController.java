@@ -19,10 +19,12 @@ public class ProductController {
     ProductService productService;
 
 
-    @RequestMapping("store");
-    @ResponseBody;
+    @RequestMapping("itemList")
+    @ResponseBody
     public String getProductImage(@RequestParam("productId") Long productId){
         return productService.getProductImageById(productId);
     }
+
+
 
 }

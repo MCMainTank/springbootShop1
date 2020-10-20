@@ -25,8 +25,8 @@ public interface OrderMapper {
 //    @Delete("delete from user where user_id = #{userId}")
 //    int deleteUserById(Long id);
 
-    @Insert("insert into eshop_order(order_id,user_id,product_id,product_quantity,order_number,create_date,product_price ) " +
-            "values(#{orderId},#{userId},#{productId},#{productQuantity},#{orderNumber},#{createDate),#{productPrice)")
+    @Insert("insert into eshop_order(order_id,user_id,product_id,product_quantity,order_number,create_date,product_price,order_address) " +
+            "values(#{orderId},#{userId},#{productId},#{productQuantity},#{orderNumber},#{createDate},#{productPrice},#{orderAddress}")
     int insertOrder(List<Order> order);
 
     @Select("select * from eshop_order ")

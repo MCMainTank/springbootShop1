@@ -1,6 +1,7 @@
 package com.mcmaintank.springboot.service;
 
 import com.mcmaintank.springboot.model.Cart;
+import com.mcmaintank.springboot.model.Order;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface OrderService {
 
     public int createOrder(List<Cart> cart);
 
+    public List<Order> checkAllOrders(Long userId);
 }

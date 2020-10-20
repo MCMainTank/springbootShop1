@@ -36,6 +36,8 @@ public class Order extends BaseEntity{
 
     private Date createDate;
 
+    private String orderAddress;
+
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;

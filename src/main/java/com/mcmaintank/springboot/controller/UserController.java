@@ -61,8 +61,8 @@ public class UserController {
 
     @RequestMapping(value = "getUser")
     @ResponseBody
-    public User checkUserInfo(){
-        User user = userService.getUser(100001L);
+    public User checkUserInfo(@RequestParam("userId") Long userId){
+        User user = userService.getUser(userId);
         return user;
     }
 
@@ -77,14 +77,14 @@ public class UserController {
     @ResponseBody
     public  String signIn(@RequestParam("username") String username,
                           @RequestParam("password") String password,
-                          @RequestParam("password") String repass,
+                          @RequestParam("repass") String repass,
                           @RequestParam("userEmail") String userEmail,
                           @RequestParam("userCellphone") Long userCellphone){
 
         if(!StringUtils.isEmpty(username)) {
-            if (userService.getUserByName(username) != null){
+            if (userService.getUserByName(username) == null){
                 if (!StringUtils.isEmpty(password) && (password).length() >= 6) {
-                    if (!password.equals(repass)) {
+                    if (password.equals(repass)) {
                         String patternString = "([0-9a-zA-Z._-]+@[0-9a-zA-Z_-]+[.]{1}[a-z]+)";
                         Pattern pattern = Pattern.compile(patternString);
                         Matcher matcher = pattern.matcher(userEmail);
@@ -97,7 +97,12 @@ public class UserController {
                                 user.setUserEmail(userEmail);
                                 user.setUserLoginname(username);
                                 user.setUserPassword(encryptUtil.encrypt(password));
-                                return "Success!";
+                                if(userService.createUser(user)==1){
+                                    return "Success!";
+                                }else {
+                                    return "Failed to create new user!";
+                                }
+
 
                             } else {
                                 return "Please enter a valid phone number!";

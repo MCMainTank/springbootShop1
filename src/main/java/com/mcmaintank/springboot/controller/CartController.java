@@ -1,9 +1,13 @@
 package com.mcmaintank.springboot.controller;
 
+import com.mcmaintank.springboot.model.Cart;
+import com.mcmaintank.springboot.service.CartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +18,9 @@ import java.util.Map;
 @RequestMapping("store")
 public class CartController {
 
+
+//    @Autowired
+//    CartService cartService;
 
 
 /**When submitting a addtocart request,first check if user has the access to his cart
@@ -36,6 +43,13 @@ public class CartController {
         return "success";
 
 //        return "insufficientfund";
+
+    }
+
+    @RequestMapping("checkCart")
+    public List<Cart> checkCart(){
+
+      return null;
 
     }
 

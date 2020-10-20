@@ -13,7 +13,7 @@ public interface UserService {
 
     public void deleteUser(Long userId);
 
-    public User createUser(User user);
+    public int createUser(User user);
 
     public String getPassword(String username);
 
