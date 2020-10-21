@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  * @create 2020/10/7
  */
 @Controller
-@RequestMapping(path = "/user")
+//@RequestMapping(path = "/user")
 public class UserController {
 
     @Autowired
@@ -36,11 +36,13 @@ public class UserController {
         return "Welcome! Please log in.";
     }
 
-    @PostMapping(path = "login")
-    public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password,
-                        Map<String,Object> map){
-
+    @RequestMapping(path = "/login")
+    @ResponseBody
+    public String login(/*@RequestParam(value="username",required=false) String username,
+                        @RequestParam(value="password",required=false) String password
+                        *//*Map<String,Object> map*/@RequestBody Map o){
+        String username = (String) o.get("username");
+        String password = (String) o.get("password");
 //        if(!StringUtils.isEmpty(username)&&userServiceImpl.getPassword().equals(ShiroUtil.encrypt(password))){
 //            //成功
 //            return "loggedin";
@@ -49,12 +51,16 @@ public class UserController {
 //            return "failed";
 //        }
 
-        if(!StringUtils.isEmpty(username)&&"123456".equals(password)){
+        if(!StringUtils.isEmpty(username)&&(userService.getPassword(username)).equals(encryptUtil.encrypt(password))){
             //成功
-            return "loggedin";
+            String jsonString1 = "{\"kstatus\":1}";
+            return jsonString1;
         }else{
-            map.put("msg","Wrong username or password!");
-            return "failed";
+//            map.put("msg","Wrong username or password!");
+            System.out.println(username+password);
+            String jsonString2="{\"kstatus\":0}";
+            return jsonString2;
+
         }
 
     }
@@ -63,6 +69,14 @@ public class UserController {
     @ResponseBody
     public User checkUserInfo(@RequestParam("userId") Long userId){
         User user = userService.getUser(userId);
+        return user;
+    }
+
+    @RequestMapping(value = "getUserByName")
+    @ResponseBody
+    public User checkUserByName(@RequestBody Map o){
+        String username = (String)o.get("username");
+        User user = userService.getUserByName(username);
         return user;
     }
 

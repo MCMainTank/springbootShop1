@@ -1,7 +1,7 @@
 package com.mcmaintank.springboot.component;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.subject.Subject;
+
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
