@@ -32,6 +32,8 @@ public class User extends BaseEntity{
 
     private String userAutograph;
 
+    private String userAddress;
+
 
 
     @javax.persistence.Id

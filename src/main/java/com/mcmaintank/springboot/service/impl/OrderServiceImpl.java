@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author MCMainTank
@@ -53,9 +54,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> checkAllOrders(Long userId) {
-        
-        return null;
+    public List<Map> checkAllOrders(Long userId) {
+        List<Map> HashMap = orderMapper.selectOrderByUserId(userId);
+        return HashMap;
+    }
+
+    @Override
+    public int deleteOrderById(Long orderId) {
+        return orderMapper.deleteOrderById(orderId);
     }
 
 

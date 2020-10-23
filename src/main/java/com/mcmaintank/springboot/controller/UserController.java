@@ -87,13 +87,22 @@ public class UserController {
         return userList;
     }
 
-    @RequestMapping("signin")
+    @RequestMapping("register")
     @ResponseBody
-    public  String signIn(@RequestParam("username") String username,
+    public  String register(/*@RequestParam("username") String username,
                           @RequestParam("password") String password,
                           @RequestParam("repass") String repass,
                           @RequestParam("userEmail") String userEmail,
-                          @RequestParam("userCellphone") Long userCellphone){
+                          @RequestParam("userCellphone") Long userCellphone*/
+                            @RequestBody Map o){
+        String username = (String) o.get("username");
+        String password = (String) o.get("password");
+        String repass = (String) o.get("repass");
+        String userEmail = (String) o.get("userEmail");
+        String userCellphone = (String) o.get("userCellPhone");
+
+
+
 
         if(!StringUtils.isEmpty(username)) {
             if (userService.getUserByName(username) == null){
@@ -103,11 +112,11 @@ public class UserController {
                         Pattern pattern = Pattern.compile(patternString);
                         Matcher matcher = pattern.matcher(userEmail);
                         if (matcher.matches()) {
-                            if ((userCellphone + "").length() > 8) {
+                            if (userCellphone.length() > 8) {
                                 User user = new User();
                                 user.setUserBalance(BigDecimal.ZERO);
-                                user.setUserAutograph(null);
-                                user.setUserCellphone(userCellphone);
+                                user.setUserAddress(null);
+                                user.setUserCellphone(Long.parseLong(userCellphone));
                                 user.setUserEmail(userEmail);
                                 user.setUserLoginname(username);
                                 user.setUserPassword(encryptUtil.encrypt(password));

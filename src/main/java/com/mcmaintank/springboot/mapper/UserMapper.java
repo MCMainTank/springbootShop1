@@ -24,8 +24,8 @@ public interface UserMapper {
     @Delete("delete from eshop_user where user_id = #{userId}")
     int deleteUserById(@Param("userId") Long userId);
 
-    @Insert("insert into eshop_user(user_loginname,user_password,user_email,user_cellphone,user_autograph,user_balance) " +
-            "values(#{userLoginname},#{userPassword},#{userEmail},#{userCellphone},#{userAutograph},#{userBalance})")
+    @Insert("insert into eshop_user(user_loginname,user_password,user_email,user_cellphone,user_address,user_balance) " +
+            "values(#{userLoginname},#{userPassword},#{userEmail},#{userCellphone},#{userAddress},#{userBalance})")
     int insertUser(User user);
 
     @Select("select * from eshop_user ")

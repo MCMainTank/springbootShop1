@@ -6,6 +6,8 @@ import com.mcmaintank.springboot.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author MCMainTank
  * @create 2020/10/7
@@ -30,6 +32,11 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public String getProductImageById(Long id) {
         return productMapper.selectProductImageById(id);
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        return productMapper.selectAllProduct();
     }
 
 }

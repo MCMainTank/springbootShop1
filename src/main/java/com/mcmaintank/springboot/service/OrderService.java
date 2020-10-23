@@ -4,6 +4,7 @@ import com.mcmaintank.springboot.model.Cart;
 import com.mcmaintank.springboot.model.Order;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author MCMainTank
@@ -13,5 +14,7 @@ public interface OrderService {
 
     public int createOrder(List<Cart> cart);
 
-    public List<Order> checkAllOrders(Long userId);
+    public List<Map> checkAllOrders(Long userId);
+
+    public int deleteOrderById(Long orderId);
 }

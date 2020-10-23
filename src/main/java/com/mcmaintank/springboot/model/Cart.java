@@ -29,7 +29,7 @@ public class Cart extends BaseEntity{
         return cartId;
     }
 
-    private int productQuantity;
+    private Integer productQuantity;
 
     private Long userId;
 

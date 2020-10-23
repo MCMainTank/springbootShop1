@@ -12,14 +12,14 @@ import java.util.List;
  */
 public interface CartMapper {
 
-    @Select("select * from eshop_cart where user_id = #{userId}")
+    @Select("select * from eshop_cart where user_id = #{userId} and deleted_logic = 0")
     List<Cart> selectCartById(@Param("userId")Long userId);
 
 //    @Update("update eshop_user set user_loginname=#{userLoginname},user_password=#{userPassword},user_email=#{userEmail}," +
 //            "user_cellphone=#{userCellphone},user_autograph=#{userAutograph},user_balance=#{userBalance}")
 //    int updateUserById(User user);
 
-    @Update("update eshop_cart set deleted_logic = 1 where user_id = #{cartId}")
+    @Update("update eshop_cart set deleted_logic = 1 where cart_id = #{cartId}")
     int deleteCartById(@Param("userId")Long cartId);
 
     @Insert("insert into eshop_cart(product_id,user_id,cart_id,product_quantity,deleted_logic) " +
