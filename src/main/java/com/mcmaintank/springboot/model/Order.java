@@ -32,13 +32,15 @@ public class Order extends BaseEntity{
 
     private Integer productQuantity;
 
-    private Long orderNumber;
-
     private Date createDate;
 
     private String orderAddress;
 
     private String productColor;
+
+    private Integer productWarranty;
+
+    private Integer deletedLogic;
 
 
     public void setOrderId(Long orderId) {

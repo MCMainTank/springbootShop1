@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.mcmaintank.springboot.model","com.mcmaintank.springboot.service","com.mcmaintank.springboot.controller"})
 @MapperScan(basePackages = {"com.mcmaintank.springboot.mapper"})
 @SpringBootApplication

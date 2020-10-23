@@ -16,5 +16,7 @@ public interface OrderService {
 
     public List<Map> checkAllOrders(Long userId);
 
+    public int createSingleOrder(Order order);
+
     public int deleteOrderById(Long orderId);
 }

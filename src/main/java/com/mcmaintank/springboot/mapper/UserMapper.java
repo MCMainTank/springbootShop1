@@ -4,6 +4,7 @@ import com.mcmaintank.springboot.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -37,6 +38,9 @@ public interface UserMapper {
     @Select("select * from eshop_user where user_loginname = #{userName}")
     User selectUserByName(@Param("userName")String userName);
 
+    @Update("update eshop_user set " +
+            "user_balance=#{fund} where user_id=#{userId}")
+    int updateUserFund(Long userId, BigDecimal fund);
 
 
 }

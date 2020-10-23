@@ -27,9 +27,13 @@ public interface OrderMapper {
 //    @Delete("delete from user where user_id = #{userId}")
 //    int deleteUserById(Long id);
 
-    @Insert("insert into eshop_order(order_id,user_id,product_id,product_quantity,product_color,create_date,product_price,order_address) " +
-            "values(#{orderId},#{userId},#{productId},#{productQuantity},#{productColor},#{createDate},#{productPrice},#{orderAddress}")
+    @Insert("insert into eshop_order(order_id,user_id,product_id,product_quantity,product_color,create_date,product_price,order_address,product_warranty,deleted_logic)" +
+            "values(#{orderId},#{userId},#{productId},#{productQuantity},#{productColor},#{createDate},#{productPrice},#{orderAddress},#{productWarranty},#{deletedLogic}")
     int insertOrder(List<Order> order);
+
+    @Insert("insert into eshop_order(user_id,product_id,product_quantity,product_color,create_date,order_address,product_warranty,deleted_logic) " +
+            "values(#{userId},#{productId},#{productQuantity},#{productColor},#{createDate},#{orderAddress},#{productWarranty},#{deletedLogic})")
+    int insertSingleOrder(Order order);
 
     @Select("select * from eshop_order ")
     void selectAllOrder();
@@ -39,6 +43,8 @@ public interface OrderMapper {
 
     @Update("update eshop_order set deleted_logic = 1 where order_id = #{orderId}")
     int deleteOrderById(@Param("orderId")Long orderId);
+
+
 
 
 }

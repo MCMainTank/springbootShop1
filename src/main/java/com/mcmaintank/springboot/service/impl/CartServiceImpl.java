@@ -5,13 +5,16 @@ import com.mcmaintank.springboot.mapper.ProductMapper;
 import com.mcmaintank.springboot.model.Cart;
 import com.mcmaintank.springboot.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author MCMainTank
  * @create 2020/10/18
  */
+@Service
 public class CartServiceImpl implements CartService {
 
 
@@ -23,34 +26,19 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
-    public int addToCart(int number, Long productId) {
-        Cart cart = new Cart();
-        try{
-            cart.setCartId(null);
-            cart.setProductId(productId);
-            cart.setProductQuantity(number);
-            cart.setDeletedLogic(0);
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-
-        }catch (Exception e){
-            e.printStackTrace();
+    public int addToCart(Cart cart) {
+        if(cartMapper.insertCart(cart)==1){
+            return 1;
+        }else{
+            return 0;
         }
 
 
-        return 0;
     }
 
     @Override
-    public List<Cart> checkCart(Long userId) {
-
-
-        return null;
-
+    public List<Map> checkCart(Long userId) {
+        return cartMapper.selectCartById(userId);
     }
 
     @Override
@@ -61,6 +49,11 @@ public class CartServiceImpl implements CartService {
     @Override
     public int deleteAllCart(Long userId) {
         return 0;
+    }
+
+    @Override
+    public int deleteCartById(Long cartId) {
+        return cartMapper.deleteCartById(cartId);
     }
 
 

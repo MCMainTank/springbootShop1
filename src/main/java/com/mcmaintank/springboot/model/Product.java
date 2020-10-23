@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class Product extends BaseEntity{
 
     private String productDescription;
 
-    private Float productPrice;
+    private BigDecimal productPrice;
 
     private String productImgpath;
 

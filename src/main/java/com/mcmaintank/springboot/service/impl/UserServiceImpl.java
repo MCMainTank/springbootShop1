@@ -74,14 +74,25 @@ public class UserServiceImpl implements UserService{
         return String.format("%032x", new BigInteger(md5.digest()));
     }
 
+    @Override
+    public int modifyUser(Long userId, BigDecimal fund) {
+        if(userMapper.updateUserFund(userId,fund)==1) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
-//    This is a function available for debugging phase.
+
+    //    This is a function available for debugging phase.
     @Override
     public int topUpUserFund(String name, BigDecimal fund) {
         User user= userMapper.selectUserByName(name);
         user.setUserBalance(user.getUserBalance().add(fund));
         return 0;
     }
+
+
 
     @Override
     public List<User> getAllUser() {

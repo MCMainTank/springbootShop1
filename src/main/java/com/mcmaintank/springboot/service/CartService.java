@@ -3,6 +3,7 @@ package com.mcmaintank.springboot.service;
 import com.mcmaintank.springboot.model.Cart;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author MCMainTank
@@ -10,12 +11,14 @@ import java.util.List;
  */
 public interface CartService {
 
-    public int addToCart(int number, Long productId);
+    public int addToCart(Cart cart);
 
-    public List<Cart> checkCart(Long userId);
+    public List<Map> checkCart(Long userId);
 
     public int deleteCart(Long userId,Long productId);
 
     public int deleteAllCart(Long userId);
+
+    public int deleteCartById(Long cartId);
 
 }

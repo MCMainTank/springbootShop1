@@ -27,4 +27,6 @@ public interface UserService {
 
     public String hashString(String hash);
 
+    public int modifyUser(Long userId, BigDecimal fund);
+
 }

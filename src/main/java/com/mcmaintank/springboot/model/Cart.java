@@ -35,5 +35,11 @@ public class Cart extends BaseEntity{
 
     private Long productId;
 
-    private int deletedLogic;
+    private String productColor;
+
+    private Integer productWarranty;
+
+    private String deliverAddress;
+
+    private Integer deletedLogic;
 }

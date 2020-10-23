@@ -60,6 +60,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public int createSingleOrder(Order order) {
+        if(orderMapper.insertSingleOrder(order)==1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    @Override
     public int deleteOrderById(Long orderId) {
         return orderMapper.deleteOrderById(orderId);
     }
