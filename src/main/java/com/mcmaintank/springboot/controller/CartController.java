@@ -95,6 +95,7 @@ public class CartController {
         String productColor = (String) o.get("productColor");
         Integer userId = (Integer) o.get("userId");
         String userBalance = (String) o.get("userBalance");
+        Integer cartId = (Integer) o.get("cartId");
         BigDecimal fund = new BigDecimal(userBalance);
         Integer deletedLogic = 0;
         order.setCreateDate(createDate);
@@ -109,7 +110,7 @@ public class CartController {
 
 
 
-        if((orderService.createSingleOrder(order)==1)&&(userService.modifyUser(userId.longValue(),fund)==1)){
+        if((orderService.createSingleOrder(order)==1)&&(userService.modifyUser(userId.longValue(),fund)==1)&&(cartService.deleteCartById(cartId.longValue())==1)){
             String jsonString1 = "{\"status\":1}";
             return jsonString1;
         }else{

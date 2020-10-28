@@ -18,11 +18,6 @@ import java.util.Map;
  */
 @Component
 public class ECInterceptor implements HandlerInterceptor {
-//    /**
-//     * @Description 在业务处理器处理请求之前被调用。预处理，可以进行编码、安全控制等处理；
-//     * @Date 2019/5/14 16:04
-//     * @Version  1.0
-//     */
 //    @Override
 //    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        System.out.println(request.getRequestURL()+"===========preHandle===========");

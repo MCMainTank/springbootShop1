@@ -42,5 +42,9 @@ public interface UserMapper {
             "user_balance=#{fund} where user_id=#{userId}")
     int updateUserFund(Long userId, BigDecimal fund);
 
+    @Update("update eshop_user set user_password=#{password} where user_id=#{userId}")
+    int updateUserPassword(@Param("userId")Long userId,
+                           @Param("password") String password);
+
 
 }

@@ -87,6 +87,12 @@ public class UserController {
         return userList;
     }
 
+    @RequestMapping("passwordChange")
+    @ResponseBody
+    public String passwordChange(){
+        return "changed";
+    }
+
     @RequestMapping("register")
     @ResponseBody
     public  String register(/*@RequestParam("username") String username,
